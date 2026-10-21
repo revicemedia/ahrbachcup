@@ -13,8 +13,9 @@ const title = "40. Ahrbach Cup · 8.–10. Januar 2027 · Montabaur";
 const description = "Das Jubiläumsturnier des TuS Ahrbach: drei Tage Fußballfest unterm Hallendach in den Kreissporthallen Montabaur.";
 
 export const metadata: Metadata = {
-  // Absolute Adresse für das Vorschaubild beim Teilen; NEXT_PUBLIC_SITE_URL auf die echte Domain setzen
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  // Absolute Adresse für das Vorschaubild beim Teilen. Bis zur eigenen Domain die Vercel-Adresse;
+  // später hier oder per NEXT_PUBLIC_SITE_URL umstellen.
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://ahrbachcup.vercel.app"),
   title,
   description,
   openGraph: {
