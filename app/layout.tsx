@@ -9,9 +9,22 @@ const googleSansFlex = Google_Sans_Flex({
   display: "swap",
 });
 
+const title = "40. Ahrbach Cup · 8.–10. Januar 2027 · Montabaur";
+const description = "Das Jubiläumsturnier des TuS Ahrbach: drei Tage Fußballfest unterm Hallendach in den Kreissporthallen Montabaur.";
+
 export const metadata: Metadata = {
-  title: "40. Ahrbach Cup · 8.–10. Januar 2027 · Montabaur",
-  description: "Das Jubiläumsturnier des TuS Ahrbach: drei Tage Fußballfest unterm Hallendach in den Kreissporthallen Montabaur.",
+  // Absolute Adresse für das Vorschaubild beim Teilen; NEXT_PUBLIC_SITE_URL auf die echte Domain setzen
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    siteName: "Ahrbach Cup",
+    locale: "de_DE",
+    type: "website",
+  },
+  twitter: { card: "summary_large_image", title, description },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -36,9 +36,9 @@ export default async function Image() {
         <div
           style={{
             position: "absolute",
-            right: 40,
-            top: -60,
-            fontSize: 620,
+            right: -20,
+            top: -40,
+            fontSize: 600,
             fontWeight: 600,
             letterSpacing: -40,
             lineHeight: 1,
@@ -50,14 +50,17 @@ export default async function Image() {
         <div
           style={{
             position: "absolute",
-            inset: 0,
-            backgroundImage: `linear-gradient(to right, ${navy} 0%, ${navy} 45%, rgba(27,35,54,0.6) 65%, rgba(27,35,54,0) 100%)`,
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+            backgroundImage: `linear-gradient(to right, ${navy} 0%, ${navy} 45%, rgba(27,35,54,0.75) 62%, rgba(27,35,54,0) 92%)`,
           }}
         />
 
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", position: "relative", padding: 64, width: "100%" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
+            {/* eslint-disable-next-line jsx-a11y/alt-text */}
             <img src={`data:image/png;base64,${logo.toString("base64")}`} width={70} height={80} />
             <div style={{ display: "flex", flexDirection: "column" }}>
               <div style={{ fontSize: 26, fontWeight: 600 }}>{event.host}</div>
