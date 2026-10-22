@@ -135,7 +135,7 @@ export const days: Day[] = [
         fee: juniorFee,
         format: 'Gruppenphase, Halbfinale, Finale',
         groups: [
-          { name: 'Gruppe A', teams: ['Mannschaft 1', 'Mannschaft 2', 'Mannschaft 3', 'Mannschaft 4'] },
+          { name: 'Gruppe A', teams: ['JSG Wäller United I', 'JSG Wäller United II', 'Mannschaft 3', 'Mannschaft 4'] },
           { name: 'Gruppe B', teams: ['Mannschaft 5', 'Mannschaft 6', 'Mannschaft 7', 'Mannschaft 8'] },
         ],
       },
@@ -155,7 +155,7 @@ export const days: Day[] = [
         fee: seniorFee,
         format: 'Gruppenphase, Halbfinale, Finale',
         groups: [
-          { name: 'Gruppe A', teams: ['Mannschaft 1', 'Mannschaft 2', 'Mannschaft 3', 'Mannschaft 4'] },
+          { name: 'Gruppe A', teams: ['FSG Ahrbach / Höhr-Grenzhausen', 'Mannschaft 2', 'Mannschaft 3', 'Mannschaft 4'] },
           { name: 'Gruppe B', teams: ['Mannschaft 5', 'Mannschaft 6', 'Mannschaft 7', 'Mannschaft 8'] },
         ],
       },
@@ -167,7 +167,7 @@ export const days: Day[] = [
         fee: seniorFee,
         format: 'Gruppenphase, Viertelfinale, Halbfinale, Finale',
         groups: [
-          { name: 'Gruppe A', teams: ['Mannschaft 1', 'Mannschaft 2', 'Mannschaft 3', 'Mannschaft 4'] },
+          { name: 'Gruppe A', teams: ['SG Ahrbach', 'Mannschaft 2', 'Mannschaft 3', 'Mannschaft 4'] },
           { name: 'Gruppe B', teams: ['Mannschaft 5', 'Mannschaft 6', 'Mannschaft 7', 'Mannschaft 8'] },
           { name: 'Gruppe C', teams: ['Mannschaft 9', 'Mannschaft 10', 'Mannschaft 11', 'Mannschaft 12', 'Mannschaft 13'] },
           { name: 'Gruppe D', teams: ['Mannschaft 14', 'Mannschaft 15', 'Mannschaft 16', 'Mannschaft 17'] },

@@ -3,6 +3,7 @@ import { Google_Sans_Flex } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
+import InstagramTab from "@/components/InstagramTab/InstagramTab";
 
 const googleSansFlex = Google_Sans_Flex({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <InstagramTab />
       </body>
     </html>
   );

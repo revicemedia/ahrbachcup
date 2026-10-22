@@ -91,14 +91,7 @@ export default function Navbar() {
             </a>
           ))}
         </div>
-        <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:gap-x-6">
-          <a href={event.instagram} target="_blank" className="group relative text-gray-900 transition-colors hover:text-red">
-            <span className="pointer-events-none absolute top-full left-1/2 z-10 mt-2 -translate-x-1/2 bg-navy px-2 py-1 text-xs font-semibold whitespace-nowrap text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
-              Instagram
-            </span>
-            <span className="sr-only">Ahrbach Cup auf Instagram</span>
-            <InstagramIcon />
-          </a>
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link
             href="/#anmeldung"
             className="bg-red px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-navy"
