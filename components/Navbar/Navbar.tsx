@@ -8,20 +8,21 @@ import InstagramIcon from '@/components/Icon/InstagramIcon'
 import { event } from '@/lib/tournaments'
 import Icon from '@/components/Icon/Icon'
 
-const navigation = [
-  { name: 'START', href: '/#start' },
-  { name: 'FREITAG', href: '/#freitag' },
-  { name: 'SAMSTAG', href: '/#samstag' },
-  { name: 'SONNTAG', href: '/#sonntag' },
-  { name: 'FOTOS', href: '/#fotos' },
-  { name: 'INFOS', href: '/#infos' },
+// section: Abschnitt auf der Startseite, der beim Scrollen hervorgehoben wird
+// page: Unterseite, auf der (inklusive aller Seiten darunter) der Punkt aktiv ist
+const navigation: { name: string; href: string; section?: string; page?: string }[] = [
+  { name: 'START', href: '/#start', section: 'start' },
+  { name: 'SPIELPLAN', href: '/spielplan', section: 'spielplan', page: '/spielplan' },
+  { name: 'FOTOS', href: '/#fotos', section: 'fotos' },
+  { name: 'INFOS', href: '/#infos', section: 'infos' },
+  { name: 'SPONSOREN', href: '/sponsoren', page: '/sponsoren' },
 ]
 
-const sectionIds = navigation.map((item) => item.href.split('#')[1])
+const sectionIds = navigation.flatMap((item) => (item.section ? [item.section] : []))
 
 // Aktiv ist die letzte Sektion, deren Anfang die Linie bei 35 % der Fensterhöhe erreicht hat.
 // So bleibt ein Punkt markiert, bis der nächste erreicht ist, auch über Abschnitte ohne eigenen
-// Menüpunkt wie Spielplan-Einleitung oder Anmeldung. Am Seitenende immer der letzte Punkt.
+// Menüpunkt wie die Anmeldung. Am Seitenende immer der letzte Punkt.
 function findActiveSection() {
   if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
     return sectionIds.at(-1) ?? null
@@ -74,6 +75,9 @@ function useMenuLayer(open: boolean, close: () => void) {
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const activeSection = useActiveSection()
+  const pathname = usePathname()
+  const current = (item: (typeof navigation)[number]) =>
+    item.page && pathname.startsWith(item.page) ? 'page' : item.section && item.section === activeSection ? 'location' : undefined
   const closeMenu = useCallback(() => setMobileMenuOpen(false), [])
   useMenuLayer(mobileMenuOpen, closeMenu)
 
@@ -100,14 +104,14 @@ export default function Navbar() {
           </div>
           <div className="hidden lg:flex lg:gap-x-8 xl:gap-x-10">
             {navigation.map((item) => (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
-                aria-current={item.href.endsWith(`#${activeSection}`) ? 'location' : undefined}
-                className="relative py-1 text-sm/6 font-semibold text-gray-900 transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:bg-red after:transition-transform hover:text-red aria-[current=location]:text-red aria-[current=location]:after:scale-x-100"
+                aria-current={current(item)}
+                className="relative py-1 text-sm/6 font-semibold text-gray-900 transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:bg-red after:transition-transform hover:text-red aria-[current]:text-red aria-[current]:after:scale-x-100"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -149,15 +153,15 @@ export default function Navbar() {
             <ul className="divide-y divide-gray-100 border-y border-gray-100">
               {navigation.map((item) => (
                 <li key={item.name}>
-                  <a
+                  <Link
                     href={item.href}
                     onClick={closeMenu}
-                    aria-current={item.href.endsWith(`#${activeSection}`) ? 'location' : undefined}
-                    className="flex items-center justify-between py-4 text-2xl font-extrabold tracking-tight text-navy uppercase transition-colors hover:text-red aria-[current=location]:text-red"
+                    aria-current={current(item)}
+                    className="flex items-center justify-between py-4 text-2xl font-extrabold tracking-tight text-navy uppercase transition-colors hover:text-red aria-[current]:text-red"
                   >
                     {item.name}
                     <Icon name="chevron_right" className="size-6 text-gray-300" />
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

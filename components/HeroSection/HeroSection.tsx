@@ -97,6 +97,8 @@ export default function HeroSection() {
                   src={slide.image}
                   fill
                   sizes="(min-width: 1024px) 50vw, 100vw"
+                  // die Slides wechseln nach wenigen Sekunden, die Fotos sollen dann schon da sein
+                  loading="eager"
                   className="animate-[hero-zoom_1.4s_ease-out_both] object-cover object-[center_35%] motion-reduce:animate-none"
                 />
                 {/* weicher Übergang vom Foto in die blaue Fläche links */}

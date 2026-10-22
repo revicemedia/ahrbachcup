@@ -1,27 +1,24 @@
-// Zeiten laut Plakat. Die Mannschaften sind Platzhalter: Die Gruppen werden nach dem Meldeschluss ausgelost.
-
-export type Group = {
-  name: string
-  teams: string[]
-}
+// Konkurrenzen und Zeiten laut Plakat. Gruppen, Paarungen und Modus kommen aus dem Spielplan (lib/schedule).
 
 export type Tournament = {
   slug: string
   name: string
   // Kurzzeichen für die Kachel, z. B. "A" oder "AH"
   badge: string
+  // kurzer Name, wo der volle zu lang ist, z. B. in der Teamsuche: "A-Jun", "Herren"
+  short: string
   start: string
   end?: string
   fee: string
-  format: string
   note?: string
-  groups: Group[]
 }
 
 export type Day = {
   slug: string
   weekday: string
   date: string
+  // für Anstoßzeiten im Spielplan, z. B. '2027-01-08'
+  isoDate: string
   headline: string
   tournaments: Tournament[]
 }
@@ -61,34 +58,27 @@ export const days: Day[] = [
     slug: 'freitag',
     weekday: 'Freitag',
     date: '8. Januar 2027',
+    isoDate: '2027-01-08',
     headline: 'Auftakt mit Junioren & Alten Herren',
     tournaments: [
       {
         slug: 'd-junioren',
         name: 'D-Junioren',
+        short: 'D-Jun',
         badge: 'D',
         start: '14:00',
         end: '18:00',
         fee: juniorFee,
-        format: 'Gruppenphase, Halbfinale, Finale',
-        groups: [
-          { name: 'Gruppe A', teams: ['Mannschaft 1', 'Mannschaft 2', 'Mannschaft 3', 'Mannschaft 4'] },
-          { name: 'Gruppe B', teams: ['Mannschaft 5', 'Mannschaft 6', 'Mannschaft 7', 'Mannschaft 8', 'Mannschaft 9'] },
-        ],
       },
       {
         slug: 'alte-herren',
         name: 'Alte Herren',
+        short: 'AH',
         badge: 'AH',
         start: '18:00',
         end: '21:30',
         fee: seniorFee,
-        format: 'Gruppenphase, Finale',
         note: 'Auf Einladung',
-        groups: [
-          { name: 'Gruppe A', teams: ['Mannschaft 1', 'Mannschaft 2', 'Mannschaft 3', 'Mannschaft 4'] },
-          { name: 'Gruppe B', teams: ['Mannschaft 5', 'Mannschaft 6', 'Mannschaft 7', 'Mannschaft 8'] },
-        ],
       },
     ],
   },
@@ -96,48 +86,36 @@ export const days: Day[] = [
     slug: 'samstag',
     weekday: 'Samstag',
     date: '9. Januar 2027',
+    isoDate: '2027-01-09',
     headline: 'Junioren-Tag',
     // Auf dem Plakat steht nur "9–18 Uhr C-, B- und A-Junioren"; die Aufteilung ist ein Vorschlag
     tournaments: [
       {
         slug: 'c-junioren',
         name: 'C-Junioren',
+        short: 'C-Jun',
         badge: 'C',
         start: '09:00',
         end: '12:00',
         fee: juniorFee,
-        format: 'Gruppenphase, Halbfinale, Finale',
-        groups: [
-          { name: 'Gruppe A', teams: ['Mannschaft 1', 'Mannschaft 2', 'Mannschaft 3', 'Mannschaft 4'] },
-          { name: 'Gruppe B', teams: ['Mannschaft 5', 'Mannschaft 6', 'Mannschaft 7', 'Mannschaft 8'] },
-          { name: 'Gruppe C', teams: ['Mannschaft 9', 'Mannschaft 10', 'Mannschaft 11', 'Mannschaft 12', 'Mannschaft 13'] },
-        ],
       },
       {
         slug: 'b-junioren',
         name: 'B-Junioren',
+        short: 'B-Jun',
         badge: 'B',
         start: '12:00',
         end: '15:00',
         fee: juniorFee,
-        format: 'Gruppenphase, Halbfinale, Finale',
-        groups: [
-          { name: 'Gruppe A', teams: ['Mannschaft 1', 'Mannschaft 2', 'Mannschaft 3', 'Mannschaft 4'] },
-          { name: 'Gruppe B', teams: ['Mannschaft 5', 'Mannschaft 6', 'Mannschaft 7', 'Mannschaft 8', 'Mannschaft 9'] },
-        ],
       },
       {
         slug: 'a-junioren',
         name: 'A-Junioren',
+        short: 'A-Jun',
         badge: 'A',
         start: '15:00',
         end: '18:00',
         fee: juniorFee,
-        format: 'Gruppenphase, Halbfinale, Finale',
-        groups: [
-          { name: 'Gruppe A', teams: ['JSG Wäller United I', 'JSG Wäller United II', 'Mannschaft 3', 'Mannschaft 4'] },
-          { name: 'Gruppe B', teams: ['Mannschaft 5', 'Mannschaft 6', 'Mannschaft 7', 'Mannschaft 8'] },
-        ],
       },
     ],
   },
@@ -145,37 +123,25 @@ export const days: Day[] = [
     slug: 'sonntag',
     weekday: 'Sonntag',
     date: '10. Januar 2027',
+    isoDate: '2027-01-10',
     headline: 'Damen & Herren',
     tournaments: [
       {
         slug: 'damen',
         name: 'Damen',
+        short: 'Damen',
         badge: 'DA',
         start: '09:00',
         fee: seniorFee,
-        format: 'Gruppenphase, Halbfinale, Finale',
-        groups: [
-          { name: 'Gruppe A', teams: ['FSG Ahrbach / Höhr-Grenzhausen', 'Mannschaft 2', 'Mannschaft 3', 'Mannschaft 4'] },
-          { name: 'Gruppe B', teams: ['Mannschaft 5', 'Mannschaft 6', 'Mannschaft 7', 'Mannschaft 8'] },
-        ],
       },
       {
         slug: 'herren',
         name: 'Herren',
+        short: 'Herren',
         badge: 'H',
         start: '12:00',
         fee: seniorFee,
-        format: 'Gruppenphase, Viertelfinale, Halbfinale, Finale',
-        groups: [
-          { name: 'Gruppe A', teams: ['SG Ahrbach', 'Mannschaft 2', 'Mannschaft 3', 'Mannschaft 4'] },
-          { name: 'Gruppe B', teams: ['Mannschaft 5', 'Mannschaft 6', 'Mannschaft 7', 'Mannschaft 8'] },
-          { name: 'Gruppe C', teams: ['Mannschaft 9', 'Mannschaft 10', 'Mannschaft 11', 'Mannschaft 12', 'Mannschaft 13'] },
-          { name: 'Gruppe D', teams: ['Mannschaft 14', 'Mannschaft 15', 'Mannschaft 16', 'Mannschaft 17'] },
-        ],
       },
     ],
   },
 ]
-
-export const timeRange = (tournament: Tournament) =>
-  tournament.end ? `${tournament.start} – ${tournament.end} Uhr` : `ab ${tournament.start} Uhr`

@@ -9,7 +9,7 @@ import { event } from '@/lib/tournaments'
 const footerSponsors = sponsors.filter((sponsor) => sponsor.footer)
 
 const navigation = [
-  { name: 'Spielplan', href: '/#spielplan' },
+  { name: 'Spielplan', href: '/spielplan' },
   { name: 'Anmeldung', href: '/#anmeldung' },
   { name: 'Fotos', href: '/#fotos' },
   { name: 'Sponsoren', href: '/sponsoren' },
