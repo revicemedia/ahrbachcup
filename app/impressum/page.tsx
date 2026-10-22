@@ -35,8 +35,8 @@ export default function ImprintPage() {
       </section>
       <BackBar current="Impressum" />
 
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 sm:py-20 lg:grid-cols-[2fr_1fr] lg:px-8">
-        <div className="flex flex-col gap-12">
+      <div className="mx-auto flex max-w-7xl flex-col gap-16 px-6 py-16 sm:py-20 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-x-16">
           <Block title="Angaben gemäß § 5 DDG">
             <address className="not-italic">
               <strong className="font-semibold text-navy">{provider.name}</strong>
@@ -77,19 +77,35 @@ export default function ImprintPage() {
             </p>
           </Block>
 
-          <Block title="Verbraucherstreitbeilegung / Universalschlichtungsstelle">
+          {/* Stand: keine Cookies, kein Browser-Speicher. Reichweitenmessung mit Vercel Web Analytics (ohne Cookies) ist vorgesehen. */}
+          <Block title="Cookies & Reichweitenmessung">
+            <p>
+              Diese Website setzt keine Cookies. Um zu sehen, welche Seiten wie oft aufgerufen werden, nutzen wir Vercel Web
+              Analytics. Auch dabei werden keine Cookies gesetzt; die Aufrufe werden anonymisiert und nur zusammengefasst
+              ausgewertet, ohne dass einzelne Besucher wiedererkannt oder Profile gebildet werden.
+            </p>
+            <p className="mt-4">
+              Schriften werden von unserem eigenen Server geladen. Links zu Instagram oder Google Maps öffnen sich erst auf
+              Klick in einem neuen Tab; dort gelten die Datenschutzbestimmungen des jeweiligen Anbieters.
+            </p>
+          </Block>
+
+          <Block title="Streitbeilegung">
             <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
           </Block>
         </div>
 
-        <aside className="h-fit border-t-4 border-red bg-gray-50 p-8">
-          <p className="text-xs font-semibold tracking-[0.25em] text-red uppercase">Dienstleister</p>
-          <h2 className="mt-3 text-xl font-extrabold tracking-tight text-navy uppercase">{serviceProvider.name}</h2>
-          <p className="mt-3 text-base/7 text-gray-600">{serviceProvider.role}</p>
+        {/* Dienstleister als Leiste unter den Angaben */}
+        <aside className="flex flex-col gap-6 border-t-4 border-red bg-gray-50 p-8 sm:p-10 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <p className="text-xs font-semibold tracking-[0.25em] text-red uppercase">Dienstleister</p>
+            <h2 className="mt-3 text-xl font-extrabold tracking-tight text-navy uppercase">{serviceProvider.name}</h2>
+            <p className="mt-2 text-base/7 text-gray-600">{serviceProvider.role}</p>
+          </div>
           <a
             href={serviceProvider.url}
             target="_blank"
-            className="mt-6 inline-flex items-center gap-2 bg-navy px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-red"
+            className="inline-flex shrink-0 items-center justify-center gap-2 self-start bg-navy px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-red lg:self-auto"
           >
             {serviceProvider.label}
             <Icon name="open_in_new" className="size-4" />
