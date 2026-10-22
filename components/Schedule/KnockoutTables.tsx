@@ -7,7 +7,7 @@ const order: Stage[] = ['roundOf16', 'quarterfinal', 'semifinal', 'third', 'fina
 // Spielnummer wie in den Platzhaltern der nächsten Runde ("Sieger AF1")
 const matchNumber = (match: ResolvedMatch) => (match.stage === 'placement' ? `Spiel um Platz ${match.placement}` : match.label)
 
-// K.-o.-Runde als eine Tabelle je Runde, untereinander
+// K.-o.-Runde als eine Tabelle je Runde; ab lg zweispaltig wie die Gruppen
 export default function KnockoutTables({ matches }: { matches: ResolvedMatch[] }) {
   const rounds = order
     .map((stage) => ({
@@ -20,9 +20,9 @@ export default function KnockoutTables({ matches }: { matches: ResolvedMatch[] }
     .filter((round) => round.matches.length)
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="grid items-start gap-6 lg:grid-cols-2">
       {rounds.map((round) => (
-        <article key={round.stage} className="bg-white ring-1 ring-gray-200">
+        <article key={round.stage} className="min-w-0 bg-white ring-1 ring-gray-200">
           <h3 className="flex items-center justify-between bg-navy px-4 py-3 text-sm font-bold tracking-wide text-white uppercase">
             {round.title}
             <span className="text-xs font-semibold tracking-wider text-white/60 normal-case">

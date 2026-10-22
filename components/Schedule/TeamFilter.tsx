@@ -139,7 +139,7 @@ export default function TeamFilter({ matches, days }: { matches: ScheduleMatch[]
                     </span>
                     <span className="flex shrink-0 gap-1">
                       {[...(teamCompetitions.get(team) ?? [])].map(([short, name]) => (
-                        <span key={short} title={name} className="bg-gray-100 px-1.5 py-0.5 text-[0.65rem] font-bold whitespace-nowrap text-gray-600">
+                        <span key={short} title={name} className="bg-gray-100 px-1.5 py-0.5 text-xs font-bold whitespace-nowrap text-gray-600">
                           {short}
                         </span>
                       ))}

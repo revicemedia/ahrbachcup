@@ -100,7 +100,7 @@ export default function DayTimeline({ competitions, now, isoDate }: { competitio
             <>
               <div />
               <div className="relative h-6">
-                <span className="absolute -translate-x-1/2 bg-red px-1.5 py-0.5 text-[0.65rem] font-bold text-white" style={{ left: `${position(now)}%` }}>
+                <span className="absolute -translate-x-1/2 bg-red px-1.5 py-0.5 text-xs font-bold text-white" style={{ left: `${position(now)}%` }}>
                   Jetzt {time(now)}
                 </span>
               </div>

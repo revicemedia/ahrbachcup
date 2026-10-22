@@ -154,7 +154,7 @@ async function CompetitionDetails({ params }: Pick<PageProps<"/spielplan/[slug]"
                 key={group}
                 name={group}
                 table={table}
-                qualifiedRanks={facts.qualifiedRanks.get(group) ?? new Set()}
+                qualifiedRanks={[...(facts.qualifiedRanks.get(group) ?? [])]}
                 matches={matches.filter((match) => match.stage === "group" && match.group === group)}
               />
             ))}
@@ -198,7 +198,7 @@ async function CompetitionDetails({ params }: Pick<PageProps<"/spielplan/[slug]"
 function SectionTitle({ id, note, children }: { id: string; note?: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-1 border-b border-gray-200 pb-4 sm:flex-row sm:items-end sm:justify-between">
-      <h2 id={id} className="text-2xl font-extrabold tracking-tight text-navy uppercase sm:text-3xl">
+      <h2 id={id} className="text-3xl font-extrabold tracking-tight text-navy uppercase sm:text-4xl">
         {children}
       </h2>
       {note && <p className="text-sm text-gray-500">{note}</p>}
