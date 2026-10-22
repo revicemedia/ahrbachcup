@@ -18,6 +18,9 @@ const navigation: { name: string; href: string; section?: string; page?: string 
   { name: 'SPONSOREN', href: '/sponsoren', page: '/sponsoren' },
 ]
 
+// im Handy-Menü zusätzlich das Impressum; am Desktop steht es nur im Footer
+const mobileNavigation: typeof navigation = [...navigation, { name: 'IMPRESSUM', href: '/impressum', page: '/impressum' }]
+
 const sectionIds = navigation.flatMap((item) => (item.section ? [item.section] : []))
 
 // Aktiv ist die letzte Sektion, deren Anfang die Linie bei 35 % der Fensterhöhe erreicht hat.
@@ -151,7 +154,7 @@ export default function Navbar() {
 
           <nav aria-label="Mobil" className="flex flex-1 flex-col px-6 py-8">
             <ul className="divide-y divide-gray-100 border-y border-gray-100">
-              {navigation.map((item) => (
+              {mobileNavigation.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
